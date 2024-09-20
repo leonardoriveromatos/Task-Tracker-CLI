@@ -99,5 +99,37 @@ Deleted tasks
 The task list is already empty
 ```
 
+### 5. `update`
+Actualiza la descripción o el estado de una tarea de la lista mediante su id o nombre.
+
+**Ejemplo**: ***Actualizando el estado de la tarea mediante el id***
+```bash
+python main.py --index 1 update --new_state "Done"
+```
+**Ejemplo**: ***Actualizando el estado de la tarea mediante la descripcion***
+```bash
+python main.py --task "Hacer la tarea" update --new_state "Done"
+```
+**Ejemplo**: ***Actualizando la nueva descripcion de la tarea mediante la descripcion actual***
+```bash
+python main.py --task "Hacer la tarea" update --new_description "Hacer la tarea y estudiar python"
+```
+**Ejemplo**: ***Actualizando la nueva descripcion mediante el id***
+```bash
+python main.py --index 1 update --new_description "Hacer la tarea y estudiar python"
+```
+**Salida esperada** (si se actualiza con éxito):
+```bash
+Updated successfully
+```
+**Salida esperada** (si no se encuentra la tarea por su ID):
+```bash
+No tasks with ID: 1 found
+```
+**Salida esperada** (si no se encuentra la tarea por su descripcion):
+```bash
+No task found with name: Hacer la tarea
+```
+
 ## Contribuciones
 ***Si quieres contribuir a este proyecto, siéntete libre de hacer un fork y crear un pull request con tus mejoras.***
