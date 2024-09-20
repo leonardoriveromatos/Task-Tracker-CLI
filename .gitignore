@@ -11,3 +11,5 @@ venv/
 # Archivos de logs
 *.log
 
+#Archivo json
+tasks.json

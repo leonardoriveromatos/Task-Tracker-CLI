@@ -37,3 +37,20 @@ def remove_all(tasks):
         save_tasks(tasks)
         return True
     return False
+
+def update_task(tasks, task_id=None, task_name=None, new_description=None, new_state = None):
+    if task_id is not None:
+        task_to_update = next((task for task in tasks if task["id"] == task_id), None)
+    elif task_name is not None:
+        task_to_update = next((task for task in tasks if task["task"] == task_name), None)
+    else:
+        return False, None
+    if task_to_update:
+        if new_description is not None:
+            task_to_update["task"] = new_description            
+            return True, task_to_update
+        elif new_state is not None:
+            task_to_update["state"] = new_state
+            return True, task_to_update
+    else:
+        return False, task_name if task_name else task_id

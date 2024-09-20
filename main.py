@@ -1,5 +1,5 @@
 import argparse
-from tasks import add_task, list_tasks, remove_task, remove_all
+from tasks import add_task, list_tasks, remove_task, remove_all, update_task
 from storage import load_tasks, save_tasks
 
 # Crear el parser
@@ -9,7 +9,9 @@ parser = argparse.ArgumentParser(description="Task Tracker CLI")
 parser.add_argument("command", choices=["add", "update", "list", "remove", "remove_all"], help="Comando a ejecutar")
 parser.add_argument("--task", help="Tarea a añadir, actualizar o remover por su nombre", required=False)
 parser.add_argument("--index", type=int, help="Índice de la tarea para actualizar o remover", required=False)
-parser.add_argument("--new-task", help="Nueva descripción para la tarea", required=False)
+parser.add_argument("--new_description", help="Nueva descripción de la tarea", required=False)
+parser.add_argument("--new_state", help="Nueva descripción del estado de la tarea", required=False)
+
 
 # Parsear los argumentos
 args = parser.parse_args()
@@ -53,3 +55,23 @@ elif args.command == "remove_all":
         print("Deleted tasks")
     else:
         print("The task list is already empty")
+
+
+elif args.command == "update":
+    if args.index:
+        success, updated_task = update_task(tasks, task_id=int(args.index), new_description=args.new_description, new_state = args.new_state)
+        if success:
+            save_tasks(tasks)
+            print("Updated successfully")
+        else:
+            print(f"No task found with ID: {args.index}")
+    elif args.task:
+        success, updated_task = update_task(tasks, task_name=args.task, new_description=args.new_description, new_state = args.new_state)
+        if success:
+            save_tasks(tasks)
+            print("Updated successfully")
+        else:
+            print(f"No task found with name: {args.task}")
+    else:
+        print("Please provide either an ID or a name to update the task")
+
