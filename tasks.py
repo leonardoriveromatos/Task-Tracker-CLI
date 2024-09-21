@@ -54,3 +54,11 @@ def update_task(tasks, task_id=None, task_name=None, new_description=None, new_s
             return True, task_to_update
     else:
         return False, task_name if task_name else task_id
+
+def list_tasks_done():
+    tasks = load_tasks()
+    tasks_list_done = []
+    for task in tasks: 
+        if task["state"] == "Done":
+            tasks_list_done.append(task)
+    return tasks_list_done
