@@ -1,12 +1,12 @@
 import argparse
-from tasks import add_task, list_tasks, remove_task, remove_all, update_task, list_tasks_done
+from tasks import add_task, list_tasks, remove_task, remove_all, update_task, list_tasks_done,list_tasks_not_done
 from storage import load_tasks, save_tasks
 
 # Crear el parser
 parser = argparse.ArgumentParser(description="Task Tracker CLI")
 
 # Definir comandos y argumentos
-parser.add_argument("command", choices=["add", "update", "list", "list_done","remove", "remove_all"], help="Comando a ejecutar")
+parser.add_argument("command", choices=["add", "update", "list", "list_done", "list_not_done","remove", "remove_all"], help="Comando a ejecutar")
 parser.add_argument("--task", help="Tarea a añadir, actualizar o remover por su nombre", required=False)
 parser.add_argument("--index", type=int, help="Índice de la tarea para actualizar o remover", required=False)
 parser.add_argument("--new_description", help="Nueva descripción de la tarea", required=False)
@@ -80,4 +80,12 @@ elif args.command == "list_done":
             print(f"ID: {task['id']}, Description: {task['task']}, State: {task['state']}")
     else:
         print("There are no tasks done in the list")
+elif args.command == "list_not_done":
+    tasks_not_ndone = list_tasks_not_done()
+    if tasks_not_ndone:
+        print("Tasks List Not Done")
+        for task in tasks_not_ndone:
+            print(f"ID: {task['id']}, Description: {task['task']}, State: {task['state']}")
+    else:
+        print("There are no tasks not done in the list")
     
