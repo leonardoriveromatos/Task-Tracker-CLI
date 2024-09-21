@@ -63,23 +63,19 @@ Tasks List Done
 ID: 1, Description: Estudiar Python, State: Done
 ```
 
-
-
 ### 4. `list_not_done`
-Muestra todas las tareas que esten realizadas almacenadas, incluyendo su índice, nombre y estado.
+Muestra todas las tareas que no esten realizadas almacenadas, incluyendo su índice, nombre y estado.
 
 **Ejemplo**:
 ```bash
-python main.py list_done
+python main.py list_not_done
 ```
 
 **Salida esperada**:
 ```bash
-Tasks List Done
-ID: 1, Description: Estudiar Python, State: Done
+Tasks List Not Done
+ID: 1, Description: Estudiar Python, State: Not done
 ```
-
-
 
 ### 5. `remove`
 Elimina una tarea de la lista por su nombre o índice.
