@@ -71,4 +71,12 @@ def list_tasks_not_done():
             if task["state"] == "Not done":
                 tasks_not_done.append(task)
     return tasks_not_done
-        
+
+def list_tasks_in_progress():
+    tasks = load_tasks()
+    tasks_in_progress = []
+    if tasks:
+        for task in tasks:
+            if task["state"] == "In progress":
+                tasks_in_progress.append(task)
+    return tasks_in_progress
