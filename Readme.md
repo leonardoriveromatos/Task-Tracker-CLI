@@ -49,8 +49,21 @@ python main.py list
 Tasks List
 ID: 1, Description: Estudiar Python, State: in progress
 ```
+### 3. `list_done`
+Muestra todas las tareas que esten realizadas almacenadas, incluyendo su índice, nombre y estado.
 
-### 3. `remove`
+**Ejemplo**:
+```bash
+python main.py list_done
+```
+
+**Salida esperada**:
+```bash
+Tasks List Done
+ID: 1, Description: Estudiar Python, State: Done
+```
+
+### 4. `remove`
 Elimina una tarea de la lista por su nombre o índice.
 
 **Ejemplo**:
@@ -81,7 +94,7 @@ Task with name: Estudiar Python deleted
 No tasks with name: Estudiar Python found
 ```
 
-### 4. `remove_all`
+### 5. `remove_all`
 Elimina todas las tareas de la lista.
 
 
@@ -99,7 +112,7 @@ Deleted tasks
 The task list is already empty
 ```
 
-### 5. `update`
+### 6. `update`
 Actualiza la descripción o el estado de una tarea de la lista mediante su id o nombre.
 
 **Ejemplo**: ***Actualizando el estado de la tarea mediante el id***
